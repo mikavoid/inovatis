@@ -4,10 +4,15 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
+        <link rel="stylesheet" href="{{asset('resources/vendor/foundation/css/foundation.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('resources/styles/css/main.css') }}">
     </head>
     <body>
         {% block body %}{% endblock %}
+        <script src="{{ asset('resources/vendor/jquery/jquery-3.1.0.min.js') }}"></script>
+        <script src="{{ asset('resources/vendor/foundation/js/vendor/foundation.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
+        <script src="{{ asset('resources/js/main.js') }}"></script>
     </body>
 </html>

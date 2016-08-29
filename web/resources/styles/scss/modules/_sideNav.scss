@@ -1,0 +1,16 @@
+.sideNav {
+  &--userInfos {
+    &--avatar {
+      width : 100%;
+      text-align: center;
+      img {
+        margin : 0 auto;
+        max-height : 100px;
+        width : auto;
+
+        border-radius : 50%;
+        border : solid white 4px;
+      }
+    }
+  }
+}

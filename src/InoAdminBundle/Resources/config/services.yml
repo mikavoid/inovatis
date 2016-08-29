@@ -1,0 +1,4 @@
+services:
+#    ino_admin.example:
+#        class: InoAdminBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
