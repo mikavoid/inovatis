@@ -1,0 +1,44 @@
+{% extends '@InoAdmin/Default/adminBase.html.twig' %}
+
+
+    {% block main %}
+        <section id="main" class="columns">
+            <div class="head">
+                {%
+                    set vars = {    title : 'category',
+                                    path : path('admin.editCategory'),
+                                    searchField : false
+                    }
+                %}
+                {% include '@InoAdmin/Default/topMenu.html.twig' with vars %}
+            </div>
+
+            {% block notices %}
+                {{ parent() }}
+            {%  endblock %}
+
+
+
+            <table class="stack hover list">
+                <thead>
+                <tr>
+                    <th width="20">ID</th>
+                    <th>Name</th>
+                    <th width="60">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+{% for cat in categories %}
+                    <tr href="{{ path('admin.editCategory',  {'id' : cat.id}) }}">
+                        <td>{{ cat.id }}</td>
+                        <td>{{ cat.name }}</td>
+
+                        <td><a href="{{ path('admin.deleteCategory', {'id' : cat.id}) }}"><span class="fa fa-remove"></span></a></td>
+                    </tr>
+{% endfor %}
+
+                </tbody>
+            </table>
+
+        </section>
+    {%  endblock %}

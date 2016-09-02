@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\News" table="news">
+    <indexes>
+      <index name="fk_news_item1_idx" columns="item_id_item"/>
+    </indexes>
+    <id name="idNews" type="integer" column="id_news">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="titleNews" type="string" column="title_news" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="contentNews" type="string" column="content_news" length="2000" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imageNews" type="string" column="image_news" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="itemItem" target-entity="Item" fetch="LAZY">
+      <join-columns>
+        <join-column name="item_id_item" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

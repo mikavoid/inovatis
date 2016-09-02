@@ -1,13 +1,63 @@
-{% extends '::base.html.twig' %}
-
-{%  block body %}
-
-    <div class="row full-width">
-            <!-- Side Nav -->
-            {% include('@InoAdmin/modules/sideNav.html.twig') %}
-            <!-- Main content -->
-            {% include('@InoAdmin/modules/main.html.twig') %}
-    </div>
+{% extends '@InoAdmin/Default/adminBase.html.twig' %}
 
 
-{% endblock %}
+    {% block main %}
+        <section id="main" class="columns">
+            <div class="head">
+                {%
+                set vars = {    title : 'Dashboard',
+                path : false,
+                searchField : false
+                }
+                %}
+                {% include '@InoAdmin/Default/topMenu.html.twig' with vars %}
+            </div>
+            {% block notices %}
+                {{ parent() }}
+            {%  endblock %}
+
+            <div class="dashboard_cards">
+                <div class="dashboard_cards--row row">
+                    <div class="small-12 large-expand columns dashboard_cards--card">
+                        <h5>New users</h5>
+                        <span class="fa fa-user-plus"></span>
+                        <p>+25</p>
+                    </div>
+
+                    <div class="small-12 large-expand columns dashboard_cards--card">
+                        <h5>New users</h5>
+                        <span class="fa fa-user-plus"></span>
+                        <p>+25</p>
+                    </div>
+
+                    <div class="small-12 large-expand columns dashboard_cards--card">
+                        <h5>New users</h5>
+                        <span class="fa fa-user-plus"></span>
+                        <p>+25</p>
+                    </div>
+
+                    <div class="small-12 large-expand columns dashboard_cards--card">
+                        <h5>New users</h5>
+                        <span class="fa fa-user-plus"></span>
+                        <p>+25</p>
+                    </div>
+
+                    <div class="small-12 large-expand columns dashboard_cards--card">
+                        <h5>New users</h5>
+                        <span class="fa fa-user-plus"></span>
+                        <p>+25</p>
+                    </div>
+
+                    <div class="small-12 large-expand columns dashboard_cards--card">
+                        <h5>New users</h5>
+                        <span class="fa fa-user-plus"></span>
+                        <p>+25</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </section>
+    {%  endblock %}
+

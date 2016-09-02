@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+{%  block body  %}
+    <div class="row full-width">
+        <!-- Side Nav -->
+        {% include('@InoAdmin/modules/sideNav.html.twig') %}
+        <!-- Main content -->
+        {% block main %}
+            {% block notices %}
+                <div class="notices">
+                    {% for notice in app.session.flashBag.get('notice') %}
+                        <div class="callout primary notice " data-closable>
+                            <h5>Notice</h5>
+                            <p>{{ notice }}</p>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <div class="errors">
+                    {% for error in app.session.flashBag.get('error') %}
+                        <div class="callout secondary notice  " data-closable>
+                            <h5>Error</h5>
+                            <p>{{ error }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endblock %}
+        {%  endblock %}
+    </div>
+{%  endblock  %}

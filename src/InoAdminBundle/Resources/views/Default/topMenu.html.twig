@@ -1,0 +1,15 @@
+<h1>{{ title | upper }}</h1>
+<div id="topMenu">
+    <div class="row">
+        <div class="columns align-center align-middle">
+            {% if searchField %}
+            <input type="text" placeholder="Search">
+            {% endif %}
+        </div>
+        <div class="small-12 medium-2 columns align-right align-middle ">
+            {% if path %}
+            <a href="{{ path }}" class="button">Add {{ title | lower}}</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

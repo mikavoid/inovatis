@@ -1,0 +1,435 @@
+CREATE DATABASE  IF NOT EXISTS `inovatis` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `inovatis`;
+-- MySQL dump 10.13  Distrib 5.6.24, for osx10.8 (x86_64)
+--
+-- Host: 127.0.0.1    Database: inovatis
+-- ------------------------------------------------------
+-- Server version	5.5.42
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category`
+--
+
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `department`
+--
+
+DROP TABLE IF EXISTS `department`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `department` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `department`
+--
+
+LOCK TABLES `department` WRITE;
+/*!40000 ALTER TABLE `department` DISABLE KEYS */;
+/*!40000 ALTER TABLE `department` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `item`
+--
+
+DROP TABLE IF EXISTS `item`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) DEFAULT NULL,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `desc` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `image` blob NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `prix` double NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_item_categorie1_idx` (`category_id`),
+  CONSTRAINT `FK_1F1B251E12469DE2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `item`
+--
+
+LOCK TABLES `item` WRITE;
+/*!40000 ALTER TABLE `item` DISABLE KEYS */;
+/*!40000 ALTER TABLE `item` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `items_newsletter`
+--
+
+DROP TABLE IF EXISTS `items_newsletter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `items_newsletter` (
+  `item_id` int(11) NOT NULL,
+  `newsletter_id` int(11) NOT NULL,
+  PRIMARY KEY (`item_id`,`newsletter_id`),
+  KEY `IDX_E09DBBFF126F525E` (`item_id`),
+  KEY `IDX_E09DBBFF22DB1917` (`newsletter_id`),
+  CONSTRAINT `FK_E09DBBFF126F525E` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`),
+  CONSTRAINT `FK_E09DBBFF22DB1917` FOREIGN KEY (`newsletter_id`) REFERENCES `newsletter` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `items_newsletter`
+--
+
+LOCK TABLES `items_newsletter` WRITE;
+/*!40000 ALTER TABLE `items_newsletter` DISABLE KEYS */;
+/*!40000 ALTER TABLE `items_newsletter` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_login_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `login`
+--
+
+LOCK TABLES `login` WRITE;
+/*!40000 ALTER TABLE `login` DISABLE KEYS */;
+INSERT INTO `login` VALUES (1,'alexkid@gmail.com','lapinou76');
+/*!40000 ALTER TABLE `login` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `news`
+--
+
+DROP TABLE IF EXISTS `news`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `news` (
+  `id_news` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id_item` int(11) DEFAULT NULL,
+  `title_news` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `content_news` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
+  `image_news` blob,
+  PRIMARY KEY (`id_news`),
+  KEY `fk_news_item1_idx` (`item_id_item`),
+  CONSTRAINT `FK_1DD399509F661F48` FOREIGN KEY (`item_id_item`) REFERENCES `item` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `news`
+--
+
+LOCK TABLES `news` WRITE;
+/*!40000 ALTER TABLE `news` DISABLE KEYS */;
+/*!40000 ALTER TABLE `news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `newsletter`
+--
+
+DROP TABLE IF EXISTS `newsletter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `newsletter` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `content` varchar(4000) COLLATE utf8_unicode_ci NOT NULL,
+  `image` blob NOT NULL,
+  `target` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 : particuliers\n1 : professionnels',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `newsletter`
+--
+
+LOCK TABLES `newsletter` WRITE;
+/*!40000 ALTER TABLE `newsletter` DISABLE KEYS */;
+/*!40000 ALTER TABLE `newsletter` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL,
+  `statut_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `item_id` int(11) DEFAULT NULL,
+  `date` datetime NOT NULL,
+  `quantity` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`statut_id`),
+  KEY `fk_user_has_item_item1_idx` (`item_id`),
+  KEY `fk_user_has_item_user1_idx` (`user_id`),
+  KEY `fk_user_order_item_statut1_idx` (`statut_id`),
+  CONSTRAINT `FK_F5299398126F525E` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`),
+  CONSTRAINT `FK_F5299398A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_F5299398F6203804` FOREIGN KEY (`statut_id`) REFERENCES `statut` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `promo`
+--
+
+DROP TABLE IF EXISTS `promo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `promo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id` int(11) DEFAULT NULL,
+  `date_debut` datetime NOT NULL,
+  `date_fin` datetime NOT NULL,
+  `image` blob NOT NULL,
+  `montant` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_promo_item1_idx` (`item_id`),
+  CONSTRAINT `FK_B0139AFB126F525E` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `promo`
+--
+
+LOCK TABLES `promo` WRITE;
+/*!40000 ALTER TABLE `promo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `promo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `statut`
+--
+
+DROP TABLE IF EXISTS `statut`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `statut` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `statut`
+--
+
+LOCK TABLES `statut` WRITE;
+/*!40000 ALTER TABLE `statut` DISABLE KEYS */;
+/*!40000 ALTER TABLE `statut` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `subscription`
+--
+
+DROP TABLE IF EXISTS `subscription`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `subscription` (
+  `departments_id` int(11) NOT NULL,
+  `newsletter_id` int(11) NOT NULL,
+  PRIMARY KEY (`departments_id`,`newsletter_id`),
+  KEY `IDX_A3C664D3F1B3F295` (`departments_id`),
+  KEY `IDX_A3C664D322DB1917` (`newsletter_id`),
+  CONSTRAINT `FK_A3C664D322DB1917` FOREIGN KEY (`newsletter_id`) REFERENCES `newsletter` (`id`),
+  CONSTRAINT `FK_A3C664D3F1B3F295` FOREIGN KEY (`departments_id`) REFERENCES `department` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subscription`
+--
+
+LOCK TABLES `subscription` WRITE;
+/*!40000 ALTER TABLE `subscription` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subscription` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tva`
+--
+
+DROP TABLE IF EXISTS `tva`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tva` (
+  `id_tva` int(11) NOT NULL AUTO_INCREMENT,
+  `amount_tva` double NOT NULL,
+  `country_tva` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_tva`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tva`
+--
+
+LOCK TABLES `tva` WRITE;
+/*!40000 ALTER TABLE `tva` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tva` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
+  `username_canonical` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
+  `email_canonical` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  `salt` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `locked` tinyint(1) NOT NULL,
+  `expired` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  `confirmation_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password_requested_at` datetime DEFAULT NULL,
+  `roles` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `credentials_expired` tinyint(1) NOT NULL,
+  `credentials_expire_at` datetime DEFAULT NULL,
+  `firstname` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `lastname` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `companyname` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `adress` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `adress2` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `zipcode` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `city` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `country` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 : non admin\n1 : admin',
+  `is_actif` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 : non actif\n1 : actif',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_8D93D64992FC23A8` (`username_canonical`),
+  UNIQUE KEY `UNIQ_8D93D649A0D96FBF` (`email_canonical`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (2,'alexkid@gmail.com','alexkid@gmail.com','mabillotte.alexis@gmail.com','mabillotte.alexis@gmail.com',0,'jp7j92rphr4gkckc8oo4cg0804wookw','804de93256bb3a4c0ed8dc7e0d553ad6',NULL,0,0,NULL,NULL,NULL,'a:0:{}',0,NULL,'Mabillotte','Alexis',NULL,'3 avenue de la concorde',NULL,'91270','Vigneux sur Seine','France','659238255',0,0);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_departments`
+--
+
+DROP TABLE IF EXISTS `user_departments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_departments` (
+  `department_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`department_id`,`user_id`),
+  KEY `IDX_BFB57141AE80F5DF` (`department_id`),
+  KEY `IDX_BFB57141A76ED395` (`user_id`),
+  CONSTRAINT `FK_BFB57141A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_BFB57141AE80F5DF` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_departments`
+--
+
+LOCK TABLES `user_departments` WRITE;
+/*!40000 ALTER TABLE `user_departments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_departments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping events for database 'inovatis'
+--
+
+--
+-- Dumping routines for database 'inovatis'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-08-30 12:54:05

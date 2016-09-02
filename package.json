@@ -20,11 +20,16 @@
   },
   "homepage": "https://github.com/mikavoid/inovatis#readme",
   "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
     "gulp-clean-css": "^2.0.12",
     "gulp-load-plugins": "^1.2.4",
     "gulp-sass": "^2.3.2",
     "run-sequence": "^1.2.2"
+  },
+  "dependencies": {
+    "foundation-sites": "^6.2.3"
   }
 }

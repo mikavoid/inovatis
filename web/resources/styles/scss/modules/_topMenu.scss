@@ -1,0 +1,23 @@
+#topMenu {
+ display: block;
+ height : $topMenu_height;
+ background: darken($darkPink, 5%);
+ line-height:$topMenu_height;
+    padding-top: 6px;
+ .row,
+ .columns {
+  height : $topMenu_height;
+  max-height : $topMenu_height;
+  padding: 0;
+  margin: 0;
+ }
+ input {
+  width: 80%;
+  margin-left: 15px;
+  padding: 15px;
+ }
+ a.button {
+  color : white;
+  width : 90%;
+ }
+}

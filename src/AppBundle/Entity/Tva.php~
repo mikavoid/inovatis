@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tva
+ *
+ * @ORM\Table(name="tva")
+ * @ORM\Entity
+ */
+class Tva
+{
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="amount_tva", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $amountTva;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country_tva", type="string", length=50, nullable=false)
+     */
+    private $countryTva;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_tva", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idTva;
+
+
+}
+

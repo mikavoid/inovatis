@@ -1,0 +1,76 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Newsletter
+ *
+ * @ORM\Table(name="newsletter")
+ * @ORM\Entity
+ */
+class Newsletter
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=45, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="string", length=4000, nullable=false)
+     */
+    private $content;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=false)
+     */
+    private $image;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="target", type="boolean", nullable=false)
+     */
+    private $target = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Department", mappedBy="newsletter")
+     */
+    private $departments;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Item", mappedBy="newsletter")
+     */
+    private $item;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->item = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

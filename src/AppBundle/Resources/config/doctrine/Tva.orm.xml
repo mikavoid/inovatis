@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Tva" table="tva">
+    <id name="idTva" type="integer" column="id_tva">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="amountTva" type="float" column="amount_tva" precision="10" scale="0" nullable="false"/>
+    <field name="countryTva" type="string" column="country_tva" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

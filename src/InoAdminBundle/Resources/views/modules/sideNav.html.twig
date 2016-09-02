@@ -1,37 +1,76 @@
-<section id="sideNav" class="small-3 columns">
-    <div class="sideNav--userInfos">
-        <div class="sideNav--userInfos--avatar">
-            <img src="{{ asset('resources/img/user.jpg') }}" alt="User picture">
+<section id="sideNav" class="small-12 medium-2 columns">
+    <div class="sideNav--userInfos row">
+        <div class="sideNav--userInfos--avatar small-12 medium-4 columns align-middle">
+            <a href="{{ path('fos_user_profile_edit')  }}"><img src="{{ asset('resources/img/user.jpg') }}" alt="User picture"></a>
         </div>
-        <div class="sideNav--userInfos--details">
-            <p> Mickael Boulat - <a href="#">Déconnexion</a> </p>
-            <!-- <ul class="details--links">
-                <li><a href="#">Store Front</a></li>
-                <li></li>
-            </ul> -->
+        <div class="sideNav--userInfos--details small-12 medium-8 columns align-middle">
+            <div class="sideNav--userInfos--details--name"> {{  app.user.username }} </div>
+            <div class="sideNav--userInfos--details--profil">Administrator</div>
+            <ul class="sideNav--userInfos--details--links">
+                <li><a href="{{ path('admin') }}" title="Dashboard"><span class="fa fa-home"></span></a></li>
+                <li><a href="{{ path('homepage') }}" target="_blank" title="Go to my store front"><span class="fa fa-shopping-bag"></span></a></li>
+                <li><a href="{{ path('fos_user_profile_edit')  }}" title="Edit my profile"><span class="fa fa-user"></span></a></li>
+                <li><a href="{{ path('fos_user_security_logout')  }}" title="Sign Out"><span class="fa fa-sign-out"></span></a></li>
+            </ul>
         </div>
     </div>
 
     <div class="siteNav--menuContainer">
-        <nav class="menuContainer--menu">
-            <ul>
+        <nav class="menuContainer--menu vertical menu">
+            <ul  id="menu" class="vertical menu " data-accordion-menu>
+                <!-- Dashboard -->
                 <li class="menu--dropdown">
-                    Inventory
-                    <ul class="l-hidden">
-                        <li class="dropdown-item"><a href="#">test1</a></li>
-                        <li class="dropdown-item"><a href="#">test2</a></li>
-                        <li class="dropdown-item"><a href="#">test3</a></li>
+                    <a href="#"><span class="fa fa-pie-chart"></span> Dashboard</a>
+                    <ul class="l-hidden menu vertical nested">
+                        <li class="dropdown-item"><a href="#">Past 24 Hrs</a></li>
+                        <li class="dropdown-item"><a href="#">Past 7 Days</a></li>
+                        <li class="dropdown-item"><a href="#">Past 30 Days</a></li>
                     </ul>
                 </li>
+
+                <!-- Inventory -->
                 <li class="menu--dropdown">
-                    Orders
-                    <ul class="l-hidden">
-                        <li class="dropdown-item"><a href="#">test1</a></li>
-                        <li class="dropdown-item"><a href="#">test2</a></li>
-                        <li class="dropdown-item"><a href="#">test3</a></li>
+                    <a href="#"> <span class="fa fa-book"></span> Inventory</a>
+                    <ul class="l-hidden menu vertical nested is-active">
+                        <li class="dropdown-item"><a href="{{ path('admin.categories') }}">Categories</a></li>
+                        <li class="dropdown-item"><a href="{{ path('admin.products') }}">Products</a></li>
+                        <!--<li class="dropdown-item"><a href="#">Brands</a></li>
+                        <li class="dropdown-item"><a href="#">Collections</a></li>-->
+                    </ul>
+                </li>
+
+                <!-- Users -->
+                <li class="menu--dropdown">
+                    <a href="#"><span class="fa fa-users"></span> Users</a>
+                    <ul class="l-hidden menu vertical nested">
+                        <li class="dropdown-item"><a href="#">Internal users</a></li>
+                        <li class="dropdown-item"><a href="#">Customers</a></li>
+                        <li class="dropdown-item"><a href="#">Groups</a></li>
+                    </ul>
+                </li>
+
+                <!-- Orders -->
+                <li class="menu--dropdown">
+                    <a href="#"><span class="fa fa-buysellads"></span> Orders</a>
+                    <ul class="l-hidden menu vertical nested">
+                        <li class="dropdown-item"><a href="#">Manage orders</a></li>
+                        <li class="dropdown-item"><a href="#">Carts</a></li>
+                    </ul>
+                </li>
+
+                <!-- Advanced -->
+                <li class="menu--dropdown">
+                    <a href="#"><span class="fa fa-plus-circle"></span> Advanced</a>
+                    <ul class="l-hidden menu vertical nested">
+                        <li class="dropdown-item"><a href="#">Shipping</a></li>
+                        <li class="dropdown-item"><a href="#">Taxes</a></li>
+                        <li class="dropdown-item"><a href="#">Currencies</a></li>
+                        <li class="dropdown-item"><a href="#">Gateways</a></li>
+                        <li class="dropdown-item"><a href="#">Languages</a></li>
                     </ul>
                 </li>
             </ul>
+
         </nav>
     </div>
 </section>

@@ -1,0 +1,64 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Promo
+ *
+ * @ORM\Table(name="promo", indexes={@ORM\Index(name="fk_promo_item1_idx", columns={"item_id"})})
+ * @ORM\Entity
+ */
+class Promo
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_begin", type="datetime", nullable=false)
+     */
+    private $dateBegin;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_end", type="datetime", nullable=false)
+     */
+    private $dateEnd;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=false)
+     */
+    private $image;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="amount", type="integer", nullable=false)
+     */
+    private $amount;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Item
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Item")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="item_id", referencedColumnName="id")
+     * })
+     */
+    private $item;
+
+
+}
+
