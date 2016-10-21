@@ -22,9 +22,16 @@ class Item
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=200, nullable=false)
+     * @ORM\Column(name="description", type="text", nullable=false)
      */
     private $description;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="featured", type="boolean", nullable=false)
+     */
+    private $featured;
 
     /**
      * @var string
@@ -276,5 +283,58 @@ class Item
     public function getNewsletter()
     {
         return $this->newsletter;
+    }
+
+    /**
+     * Set featured
+     *
+     * @param boolean $featured
+     *
+     * @return Item
+     */
+    public function setFeatured($featured)
+    {
+        $this->featured = $featured;
+
+        return $this;
+    }
+
+    /**
+     * Get featured
+     *
+     * @return boolean
+     */
+    public function getFeatured()
+    {
+        return $this->featured;
+    }
+    /**
+     * @var boolean
+     */
+    private $star;
+
+
+    /**
+     * Set star
+     *
+     * @param boolean $star
+     *
+     * @return Item
+     */
+    public function setStar($star)
+    {
+        $this->star = $star;
+
+        return $this;
+    }
+
+    /**
+     * Get star
+     *
+     * @return boolean
+     */
+    public function getStar()
+    {
+        return $this->star;
     }
 }

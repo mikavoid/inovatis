@@ -1,0 +1,21 @@
+{% extends '@InoAdmin/Default/adminBase.html.twig' %}
+    {% block main %}
+        <section id="main" class="columns">
+            <div class="head">
+                {%
+                    set vars = {
+                                title : 'add user',
+                                path : false,
+                                searchField : false
+                    }
+                %}
+                {% include '@InoAdmin/Default/topMenu.html.twig' with vars %}
+            </div>
+            <div class="content">
+                {{ form_start(form , {'attr': {'class': ''}}) }}
+                {{ form_widget(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                {{ form_end(form) }}
+            </div>
+
+        </section>
+    {%  endblock %}

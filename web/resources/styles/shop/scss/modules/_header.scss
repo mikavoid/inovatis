@@ -1,0 +1,32 @@
+#Header {
+    background: rgba(0, 0, 0, 0.5);
+    color : white;
+    #header_image {
+        text-align: center;
+        img {
+            max-height : 400px;
+            width: auto;
+        }
+    }
+    #header_text {
+        font-family: Lato, sans-serif!important;
+        h1 {
+            text-align: right;
+            font-weight: 100;
+            font-size : 300%;
+            border-bottom: $pink 4px solid;
+            margin-bottom: 20px;
+        }
+        .btns {
+            text-align: right;
+            ul li  {
+                margin-left: 10px;
+            }
+        }
+        p {
+            line-height: 20px;
+            padding: 40px 0;
+            text-align: right;
+        }
+    }
+}

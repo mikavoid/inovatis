@@ -53,5 +53,110 @@ class News
     private $itemItem;
 
 
-}
 
+    /**
+     * Set titleNews
+     *
+     * @param string $titleNews
+     *
+     * @return News
+     */
+    public function setTitleNews($titleNews)
+    {
+        $this->titleNews = $titleNews;
+
+        return $this;
+    }
+
+    /**
+     * Get titleNews
+     *
+     * @return string
+     */
+    public function getTitleNews()
+    {
+        return $this->titleNews;
+    }
+
+    /**
+     * Set contentNews
+     *
+     * @param string $contentNews
+     *
+     * @return News
+     */
+    public function setContentNews($contentNews)
+    {
+        $this->contentNews = $contentNews;
+
+        return $this;
+    }
+
+    /**
+     * Get contentNews
+     *
+     * @return string
+     */
+    public function getContentNews()
+    {
+        return $this->contentNews;
+    }
+
+    /**
+     * Set imageNews
+     *
+     * @param string $imageNews
+     *
+     * @return News
+     */
+    public function setImageNews($imageNews)
+    {
+        $this->imageNews = $imageNews;
+
+        return $this;
+    }
+
+    /**
+     * Get imageNews
+     *
+     * @return string
+     */
+    public function getImageNews()
+    {
+        return $this->imageNews;
+    }
+
+    /**
+     * Get idNews
+     *
+     * @return integer
+     */
+    public function getIdNews()
+    {
+        return $this->idNews;
+    }
+
+    /**
+     * Set itemItem
+     *
+     * @param \AppBundle\Entity\Item $itemItem
+     *
+     * @return News
+     */
+    public function setItemItem(\AppBundle\Entity\Item $itemItem = null)
+    {
+        $this->itemItem = $itemItem;
+
+        return $this;
+    }
+
+    /**
+     * Get itemItem
+     *
+     * @return \AppBundle\Entity\Item
+     */
+    public function getItemItem()
+    {
+        return $this->itemItem;
+    }
+}

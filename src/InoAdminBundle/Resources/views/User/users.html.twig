@@ -1,0 +1,45 @@
+{% extends '@InoAdmin/Default/adminBase.html.twig' %}
+
+
+    {% block main %}
+        <section id="main" class="columns">
+            <div class="head">
+                {%
+                    set vars = {
+                        title : 'user',
+                        path : path('admin.editUser'),
+                        searchField : true
+                    }
+                %}
+                {% include '@InoAdmin/Default/topMenu.html.twig' with vars %}
+            </div>
+
+            {% block notices %}
+                {{ parent() }}
+            {%  endblock %}
+
+            <table class="stack hover list">
+                <thead>
+                <tr>
+                    <th width="20">ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th width="60">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+{% for usr in users %}
+                    <tr href="{{ path('admin.editUser',  {'id' : usr.id}) }}">
+                        <td>{{ usr.id }}</td>
+                        <td>{{ usr.username }}</td>
+                        <td>{{ usr.email }}</td>
+
+                        <td><a href="{{ path('admin.deleteUser', {'id' : usr.id}) }}"><span class="fa fa-remove"></span></a></td>
+                    </tr>
+{% endfor %}
+
+                </tbody>
+            </table>
+
+        </section>
+    {%  endblock %}

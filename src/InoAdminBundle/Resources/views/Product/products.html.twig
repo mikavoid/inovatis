@@ -35,7 +35,7 @@
                     <td>{{ product.id }}</td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.description }}</td>
-                    <td>todo</td>
+                    <td><img src="{{ asset('uploads/photos/' ~ product.image) }}" alt="Product image"></td>
                     <td>{{ product.quantity }}</td>
                     <td>{{ product.price }}</td>
                     <td>{{ product.category.name }}</td>

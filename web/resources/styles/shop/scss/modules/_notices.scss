@@ -1,0 +1,13 @@
+.notice {
+    border : none !important;
+    margin : 10px;
+    text-align: center;
+}
+
+.errors .notice {
+    background-color : $invalid;
+    color : white;
+}
+.notices .notice {
+    background-color : $valid;
+}

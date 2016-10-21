@@ -1,3 +1,13 @@
+ino_user:
+    resource: "@InoUserBundle/Controller/"
+    type:     annotation
+    prefix:   /user
+
+ino_shop:
+    resource: "@InoShopBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 ino_admin:
     resource: "@InoAdminBundle/Controller/"
     type:     annotation

@@ -1,0 +1,9 @@
+{% extends 'baseshop.html.twig' %}
+
+{% block body %}
+    {% block fos_user_content %}
+        <div class="user_form">
+            {% include "InoUserBundle:Registration:register_content.html.twig" %}
+        </div>
+    {% endblock fos_user_content %}
+{% endblock %}

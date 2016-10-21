@@ -9,6 +9,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="GRC">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="Inovatis">
         <serverdata>
           <mappings>
@@ -24,6 +31,13 @@
         </serverdata>
       </paths>
       <paths name="front">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="ged_test">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

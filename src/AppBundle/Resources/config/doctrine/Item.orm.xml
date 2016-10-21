@@ -12,7 +12,18 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="description" type="string" column="description" length="200" nullable="false">
+    <field name="description" type="text" column="description" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="featured" type="boolean" column="featured" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+
+    <field name="star" type="boolean" column="star" nullable="false">
       <options>
         <option name="fixed"/>
       </options>

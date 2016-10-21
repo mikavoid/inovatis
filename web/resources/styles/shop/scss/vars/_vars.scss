@@ -1,0 +1,74 @@
+$color : #ededea;
+$violet : violet;
+$darkGrey : #333;
+$grey : #888;
+$rgrey : #666666;
+$lightGrey : #ededed;
+$pink : #f8d5db;
+//$darkPink : #db2545;
+$darkPink : #e97d8f;
+$card_back: #f8f7f7;
+
+$valid : $pink;
+$invalid : $darkPink;
+
+$header-height : 200px;
+
+$topMenu_height : 50px;
+
+$main_font : 'Lato';
+$nb_liens_menu : 4;
+// colors
+$pink : #f8d5db;
+$darken_pink: darken($pink, 12%);
+$primary : #9b59b6;
+$light_grey : #f0f0f0;
+$dark_grey : #2A2A2A;
+$grey : #676767;
+
+$colorSideHeading : $pink;
+
+$colorAbout : $pink;
+$colorChiffres : darken($pink, 15%);
+$colorTeam : $pink;
+$colorImplantation : darken($pink, 15%);
+$colorContact : $pink;
+
+
+// named colors
+$bg_dark: $dark_grey;
+$bg_light: $light_grey;
+$bg_color: $pink;
+$focus:  $pink;
+
+$text_light : $light_grey;
+$text_dark : #2c3e50;
+$text_dark : darken(#8e44ad, 30%);
+$text_color : $pink;
+
+$small_spacer : 10px;
+
+
+//Heights
+/* #TopBar */
+$TopBarHeight: 40px;
+/* #NavBar */
+$NavBarHeight: 100px;
+/* #Header */
+$HeaderHeight: 359px;
+/* #CatBar */
+$CatBarHeight: 52px;
+/* #Categories */
+$CategoriesHeight: 379px;
+/* #Featured */
+$FeaturedHeight: 416px;
+/* #Promos */
+$PromosHeight: 455px;
+/* #Payment */
+$PaymentHeight: 84px;
+/* #Footer */
+$FooterHeight: 333px;
+
+
+/* Responsive */
+$bp : 774px;

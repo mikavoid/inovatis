@@ -8,7 +8,7 @@
             <div class="sideNav--userInfos--details--profil">Administrator</div>
             <ul class="sideNav--userInfos--details--links">
                 <li><a href="{{ path('admin') }}" title="Dashboard"><span class="fa fa-home"></span></a></li>
-                <li><a href="{{ path('homepage') }}" target="_blank" title="Go to my store front"><span class="fa fa-shopping-bag"></span></a></li>
+                <li><a href="{{ path('shop_home') }}" target="_blank" title="Go to my store front"><span class="fa fa-shopping-bag"></span></a></li>
                 <li><a href="{{ path('fos_user_profile_edit')  }}" title="Edit my profile"><span class="fa fa-user"></span></a></li>
                 <li><a href="{{ path('fos_user_security_logout')  }}" title="Sign Out"><span class="fa fa-sign-out"></span></a></li>
             </ul>
@@ -43,9 +43,9 @@
                 <li class="menu--dropdown">
                     <a href="#"><span class="fa fa-users"></span> Users</a>
                     <ul class="l-hidden menu vertical nested">
-                        <li class="dropdown-item"><a href="#">Internal users</a></li>
-                        <li class="dropdown-item"><a href="#">Customers</a></li>
-                        <li class="dropdown-item"><a href="#">Groups</a></li>
+                        <li class="dropdown-item"><a href="{{ path('admin.users', {'customer' : 'admin'}) }}">Internal users</a></li>
+                        <li class="dropdown-item"><a href="{{ path('admin.users', {'customer' : 'customer'}) }}">Customers</a></li>
+                        <!-- <li class="dropdown-item"><a href="#">Groups</a></li> -->
                     </ul>
                 </li>
 

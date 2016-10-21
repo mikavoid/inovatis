@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}iNovatis - Shop{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
+        <link rel="stylesheet" href="{{asset('resources/vendor/font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('resources/styles/shop/css/main.css') }}">
+    </head>
+    <body>
+        {% block ecommerce_header %}
+        <!-- TopBar ------------------------------------------------------------------>
+        <section id="TopBar">
+            <div class="row">
+                <div class="top_bar_reseaux_sociaux">
+                    <ul>
+                        <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fa fa-twitter-square"></span></a></li>
+                    </ul>
+                </div><!-- .top_bar_reseaux_sociaux -->
+
+                <div class="top_bar_menu">
+                    <ul>
+                        {% if app.user %}
+                            <li><a href="#"><span class="fa fa-user"></span> {{ app.user }}</a><a href="{{ path('fos_user_security_logout') }}"><span class="fa fa-sign-out"></span></a></li>
+                        {% else %}
+                            <li><a href="{{ path('user.login') }}"><span class="fa fa-sign-in"></span> Sign In</a></li>
+                        {% endif %}
+                        <li><a href="#"><span class="fa fa-shopping-cart"></span></a></li>
+                    </ul>
+                </div><!-- .top_bar_menu -->
+            </div>
+        </section> <!--#TopBar-->
+
+        <!-- NavBar ------------------------------------------------------------------>
+        <section id="NavBar" class="z-depth-1">
+            <nav class="row">
+                <div id="main_menu">
+                    <div class="title-bar" data-responsive-toggle="tpr-menu" data-hide-for="medium">
+                        <a class="menu horizontal" href="#" data-toggle><div class="title-bar-title">Menu</div></a>
+                    </div>
+                    <div class="top-bar" id="tpr-menu">
+                        <div class="top-bar-left">
+                            <ul class="vertical medium-horizontal menu accrdn" data-responsive-menu="accordion medium-dropdown">
+                                <li class="menu-text">
+                                    <a href="{{ path('shop_home') }}"><img src="{{ asset('resources/img/shop/raw_logo_dark.png') }}" alt=""></a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="top-bar-right">
+                            <ul class="menu">
+                                <li><input type="search" placeholder="Search"></li>
+                                <li><button type="button" class="button">Search</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>  
+            </nav>
+            <!--<div id="burger_icon">
+<span class="fa fa-bars"></span>
+</div>
+<nav id="navbar_main_menu">
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Products</a></li>
+<li><a href="#">Company</a></li>
+<li><a href="#">Blog</a></li>
+</ul>
+</nav>
+<div id="navbar_brand">
+<a href="#"><img src="{{ asset('Resources/images/logo_dark.png') }}" alt="Logo d'Inovatis"></a>
+<p id="slogan">Magical <span>Technology</span></p>
+</div>
+-->
+            </div>
+        <!--
+<nav id="navbar_main_menu_mobile">
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Products</a></li>
+<li><a href="#">Company</a></li>
+<li><a href="#">Blog</a></li>
+</ul>
+</nav> -->
+        </section> <!--#NavBar-->
+
+
+    {% endblock %}
+
+    {% block body %}
+    {% block content %}
+    {% block fos_user_content %}{% endblock %}
+    {% endblock %}
+    {% endblock %}
+
+    {%  block footer %}
+    <!-- Footer ------------------------------------------------------------------>
+    <footer id="Footer">
+        <div class="row">
+           <div class="footer__about">
+                <div class="footer-title z-depth-1">
+                    <h5>About us</h5>
+                </div>
+                <div class="footer-content">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi soluta magnam minus hic nihil, praesentium reprehenderit alias nobis totam, nam fugit delectus sint. Sunt illum, perspiciatis nulla quis aspernatur aliquid?
+                    </p>
+                </div>
+            </div>
+            <div class="footer__contact">
+                <div class="footer-title z-depth-1">
+                    <h5>About us</h5>
+                </div>
+                <div class="footer-content">
+                    <div id="footer_address">
+                        <ul>
+                            <li><span class="fa fa-map-marker"></span>37 rue du Serpolet,<br>30110 La Grand'Combe</li>
+                            <li><span class="fa fa-phone-square"></span>06 80 75 81 30</li>
+                            <li><span class="fa fa-envelope-square"></span><a href="#">contact@inovatis.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__categories">
+                <div class="footer-title z-depth-1">
+                    <h5>Categories</h5>
+                </div>
+                <div class="footer-content">
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>         
+            <div class="footer__account">
+                    <div class="footer-title z-depth-1">
+                        <h5>My Account</h5>
+                    </div>
+                    <div class="footer-content">
+                        <ul>
+                            <li><a href="#">Connexion</a></li>
+                            <li><a href="#">Account</a></li>
+                            <li><a href="#">My orders</a></li>
+                            <li><a href="#">My wishlist</a></li>
+                            <li><a href="#">Products consulted</a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </footer> <!--#Footer-->
+    {%  endblock %}
+    <script src="{{ asset('resources/vendor/jquery/jquery-3.1.0.min.js') }}"></script>
+    <script src="{{ asset('resources/vendor/foundation/js/vendor/foundation.js') }}"></script>
+
+    <script src="{{ asset('resources/vendor/scripts/foundation.util.mediaQuery.js') }}"></script>
+    <script src="{{ asset('resources/vendor/scripts/foundation.responsiveMenu.js') }}"></script>
+    <script src="{{ asset('resources/vendor/scripts/foundation.responsiveToggle.js') }}"></script>
+    <script src="{{ asset('resources/vendor/scripts/foundation.accordionMenu.js') }}"></script>
+    {% block javascripts %}{% endblock %}
+    <script src="{{ asset('resources/js/main.js') }}"></script>
+    </body>
+</html>

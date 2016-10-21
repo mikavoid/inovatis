@@ -13,14 +13,52 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
+        #admin:
+        #    pattern:      /admin(.*)
+        #    form_login:
+        #        provider:       fos_userbundle
+        #        login_path:     /admin/login
+        #        use_forward:    true
+        #        check_path:     /admin/login_chec
+        #        failure_path:   null
+        #    logout:
+        #        path:           /admin/logout
+        #    anonymous:    true
+        #       # -> end custom configuration
+        #main:
+        #    pattern:      .*
+        #    form_login:
+        #        provider:       fos_userbundle
+        #        login_path:     /login
+        #        use_forward:    false
+        #        check_path:     /login_check
+        #        failure_path:   null
+        #    logout:
+        #        path:           /admin/logout
+        #    anonymous:    true
+
+        main_bo:
+            pattern: ^/admin
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                check_path: /admin/login_check
+                login_path: /admin/login
+            logout:
+                path: /logout
+            anonymous:    ~
+              # firewall du front office
+        main_user:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
+                check_path: /user/login_check
+                login_path: /user/login
+            logout:
+                path: /logout
+            anonymous:    ~
 
-            logout:       true
-            anonymous:    true
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
@@ -29,7 +67,15 @@ security:
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        - { path: ^/user/profile/, role: ROLE_USER }
+        - { path: ^/profile/, role: ROLE_ADMIN }

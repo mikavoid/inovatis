@@ -1,8 +1,10 @@
 /* Configuration */
 const paths = {
-   css : 'web/resources/styles/css',
+   css : 'web/resources/styles/admin/css',
+   css_shop : 'web/resources/styles/shop/css',
    scripts : 'web/resources/vendor/scripts',
-   scss : 'web/resources/styles/scss',
+   scss : 'web/resources/styles/admin/scss',
+   scss_shop : 'web/resources/styles/shop/scss',
    foundation_scss : 'node_modules/foundation-sites/scss',
     foundation_scripts : 'node_modules/foundation-sites/js'
 }
@@ -28,6 +30,18 @@ gulp.task('sass', () => {
        .pipe(gulp.dest(paths.css))
 })
 
+gulp.task('sassshop', () => {
+    gulp.src(paths.scss_shop + '/**/**/*.scss')
+        .pipe($.sass({
+            includePaths: [
+                paths.foundation_scss
+            ]
+        }).on('error', $.sass.logError))
+        .pipe($.autoprefixer({browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']}))
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest(paths.css_shop))
+})
+
 /* Conversion du JS de Foundation*/
 gulp.task('babel', () => {
     gulp.src(paths.foundation_scripts + '/**/*.js')
@@ -42,6 +56,7 @@ gulp.task('babel', () => {
 gulp.task('default', function(){
    gulp.watch(paths.foundation_scripts + '/**/*.js', ['babel']);
    gulp.watch(paths.scss + '/**/**/*.scss', ['sass']);
+   gulp.watch(paths.scss_shop + '/**/**/*.scss', ['sassshop']);
 });
 
 

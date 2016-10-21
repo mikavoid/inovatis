@@ -1,6 +1,7 @@
 $(document).ready(function(){
-    //$(document).foundation();
+    $(document).foundation();
     var elem = new Foundation.AccordionMenu($('#menu'), {});
+   // var main_menu = new Foundation.ResponsiveToggle($('#example-menu'), {});
 
     setTimeout(function() {
         $('.notices').slideUp();
@@ -12,4 +13,5 @@ $(document).ready(function(){
     $('table.list tbody tr').dblclick(function() {
        $(location).attr('href', $(this).attr('href'));
     });
+
 });

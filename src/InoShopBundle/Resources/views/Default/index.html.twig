@@ -1,0 +1,50 @@
+{% extends 'baseshop.html.twig' %}
+
+{% block body %}
+    <!-- Header ------------------------------------------------------------------>
+    <header id="Header">
+        <div class="row align-middle">
+            <div id="header_image">
+                <img src="{{ asset('uploads/photos/' ~ star.image) }}" alt="">
+            </div>
+            <div id="header_text">
+                <h1>{{ star.name }}</h1>
+                <p>
+                    {{ star.description }}
+                </p>
+                <div class="btns">
+                    <ul>
+                        <li><a class="success hollow button" href="#">Details</a></li>
+                        <li><a class="success button" href="#">Add to cart</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header> <!--#Header-->
+
+    <!-- Featured ------------------------------------------------------------------>
+    <section id="Featured">
+        <div class="row">
+            <h2>Featured products</h2>
+        </div>
+        <div class="row">
+
+            {% for item in featured %}
+                <div class="item">
+                    <div class="content card-1">
+                        <div class="left">
+                            <div class="photo">
+                                <img src="{{ asset('uploads/photos/' ~ item.image) }}" alt="">
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="title">
+                                {{ item.name }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section> <!--#Featured-->
+{% endblock %}

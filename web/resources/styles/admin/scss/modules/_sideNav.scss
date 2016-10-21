@@ -1,0 +1,79 @@
+#sideNav {
+  //background-image : url('../../img/backSideNav.jpg');
+  background-color : $grey;
+}
+
+.sideNav {
+    padding: 0;
+    margin:0 !important;
+    &--userInfos {
+      background: $darkGrey;
+      color : white;
+      padding: 0;
+      margin: 0 !important;
+      height: $header-height;
+      &--avatar {
+        text-align: center;
+        img {
+          margin : 0 auto;
+          width : auto;
+
+          border-radius : 50%;
+
+          border : solid white 4px;
+        }
+      }
+      &--details {
+        &--name {
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+        &--profil {
+          font-size : 80%;
+          font-style: italic;
+          color : $pink;
+        }
+        &--links {
+          margin : 0 auto;
+          //float : right;
+          list-style: none;
+          li {
+            display : inline-block;
+            font-size : 20px;
+            padding-right: 10px;
+            a {
+              color : white;
+              &:hover {
+                color : pink;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+.menuContainer--menu {
+  background-color : white;
+    .menu li a {
+        line-height: 21px;
+    }
+}
+
+.dropdown-item {
+  background : $lightGrey;
+  a {
+    transition-duration: 350ms;
+  }
+  &:hover a {
+    background : darken($lightGrey, 10%);
+  }
+}
+
+.menu--dropdown {
+  border-bottom:1px solid $lightGrey;
+  a span {
+    color : darken($pink, 40%);
+    padding-right: 20px;
+  }
+}

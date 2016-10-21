@@ -36,5 +36,62 @@ class Tva
     private $idTva;
 
 
-}
 
+    /**
+     * Set amountTva
+     *
+     * @param float $amountTva
+     *
+     * @return Tva
+     */
+    public function setAmountTva($amountTva)
+    {
+        $this->amountTva = $amountTva;
+
+        return $this;
+    }
+
+    /**
+     * Get amountTva
+     *
+     * @return float
+     */
+    public function getAmountTva()
+    {
+        return $this->amountTva;
+    }
+
+    /**
+     * Set countryTva
+     *
+     * @param string $countryTva
+     *
+     * @return Tva
+     */
+    public function setCountryTva($countryTva)
+    {
+        $this->countryTva = $countryTva;
+
+        return $this;
+    }
+
+    /**
+     * Get countryTva
+     *
+     * @return string
+     */
+    public function getCountryTva()
+    {
+        return $this->countryTva;
+    }
+
+    /**
+     * Get idTva
+     *
+     * @return integer
+     */
+    public function getIdTva()
+    {
+        return $this->idTva;
+    }
+}

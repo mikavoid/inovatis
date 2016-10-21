@@ -60,5 +60,134 @@ class Promo
     private $item;
 
 
-}
 
+    /**
+     * Set dateBegin
+     *
+     * @param \DateTime $dateBegin
+     *
+     * @return Promo
+     */
+    public function setDateBegin($dateBegin)
+    {
+        $this->dateBegin = $dateBegin;
+
+        return $this;
+    }
+
+    /**
+     * Get dateBegin
+     *
+     * @return \DateTime
+     */
+    public function getDateBegin()
+    {
+        return $this->dateBegin;
+    }
+
+    /**
+     * Set dateEnd
+     *
+     * @param \DateTime $dateEnd
+     *
+     * @return Promo
+     */
+    public function setDateEnd($dateEnd)
+    {
+        $this->dateEnd = $dateEnd;
+
+        return $this;
+    }
+
+    /**
+     * Get dateEnd
+     *
+     * @return \DateTime
+     */
+    public function getDateEnd()
+    {
+        return $this->dateEnd;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Promo
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount
+     *
+     * @return Promo
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return integer
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set item
+     *
+     * @param \AppBundle\Entity\Item $item
+     *
+     * @return Promo
+     */
+    public function setItem(\AppBundle\Entity\Item $item = null)
+    {
+        $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * Get item
+     *
+     * @return \AppBundle\Entity\Item
+     */
+    public function getItem()
+    {
+        return $this->item;
+    }
+}

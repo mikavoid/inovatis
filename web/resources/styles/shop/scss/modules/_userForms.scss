@@ -1,0 +1,16 @@
+.user_form {
+    background: rgba(255, 255, 255, 0.37);
+   // background-image: url(../../../img/shop/raw_logo_dark_20.png);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: contain;
+    padding-bottom: 60px;
+    form {
+        width : 30%;
+        label {
+            color : $rgrey;
+        }
+    }
+
+}
+
