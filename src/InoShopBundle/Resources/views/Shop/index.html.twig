@@ -20,7 +20,7 @@
                 <div class="btns">
                     <ul>
                         <li><a class="success hollow button" href="{{ path('shop.product', {'pdt_id' : star.id }) }}">Details</a></li>
-                        <li><a class="success button" href="#">Add to cart</a></li>
+                        <li><a class="success button" href="{{ path('shop.addToCart', {'pdt_id' : star.id}) }}">Add to cart</a></li>
                     </ul>
                 </div>
             {% else %}

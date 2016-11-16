@@ -1,0 +1,50 @@
+{% extends 'baseshop.html.twig' %}
+
+{% block body %}
+    <!-- Cart ------------------------------------------------------------------>
+    <div id="Cart">
+        <div class="content row">
+        <h2>Cart</h2>
+            {% if cart is not empty %}
+            <table>
+                <tr>
+                    <th class="left">Product name</th>
+                    <th width="50">Quantity</th>
+                    <th class="price" width="200">Unit Price</th>
+                    <th class="price" width="200">Total Price</th>
+                    <th width="50">Remove</th>
+                </tr>
+                {% set total = 0 %}
+                {% for row in cart %}
+                    {%  set total = total + row.product_total_price_raw %}
+            <tr>
+                <td class="left">{{ row.product_name }}</td>
+                <td><input value="1" min="1" max="1000" type="number" value="{{ row.quantity }}"></td>
+                <td class="price">{{ row.product_unit_price }}</td>
+                <td class="price">{{ row.product_total_price }}</td>
+                <td><a href="{{ path('shop.removeFromCart', {'pdt_id' : row.product_id}) }}"><span class="fa fa-trash"></span></a></td>
+            </tr>
+            {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="right"><strong>Total</strong></td>
+                    <td class="price total">$ {{ total | number_format(2, '.', ' ') }}</td>
+                    <td></td>
+                </tr>
+
+                </table>
+                <div class="buttons">
+                    <form action="{{  path('shop.order') }}" method="POST">
+                        <button type="submit" class="button"><span class="fa fa-cart-plus"></span> Place order</button>
+                    </form>
+                </div>
+            {% else %}
+                <p>There's nothing in the cart</p>
+            {% endif %}
+
+
+        </div>
+    </div> <!--#cart-->
+
+{% endblock %}

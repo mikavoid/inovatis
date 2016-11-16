@@ -79,3 +79,4 @@ security:
 
         - { path: ^/user/profile/, role: ROLE_USER }
         - { path: ^/profile/, role: ROLE_ADMIN }
+        - { path: ^/cart/order, role: ROLE_USER }

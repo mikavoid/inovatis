@@ -61,12 +61,16 @@
                     display: inline-block;
                     width : 50px;
                 }
-                .buttons {
+                .buttons form {
                     position: relative;
                     top:5px;
                     display: inline-block;
                     a {
                         color: white;
+                    }
+                    button {
+                        position: relative;
+                        top:5.2px;
                     }
                 }
             }
