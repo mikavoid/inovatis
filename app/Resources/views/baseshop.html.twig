@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="{{ asset('resources/styles/shop/css/main.css') }}">
     </head>
     <body>
-        {% block ecommerce_header %}
+      {% block ecommerce_header %}
         <!-- TopBar ------------------------------------------------------------------>
         <section id="TopBar">
             <div class="row">
@@ -32,7 +32,6 @@
                 </div><!-- .top_bar_menu -->
             </div>
         </section> <!--#TopBar-->
-
         <!-- NavBar ------------------------------------------------------------------>
         <section id="NavBar" class="z-depth-1">
             <nav class="row">
@@ -44,16 +43,18 @@
                         <div class="top-bar-left">
                             <ul class="vertical medium-horizontal menu accrdn" data-responsive-menu="accordion medium-dropdown">
                                 <li class="menu-text">
-                                    <a href="{{ path('shop_home') }}"><img src="{{ asset('resources/img/shop/raw_logo_dark.png') }}" alt=""></a>
+                                    <a href="{{ path('shop.homepage') }}"><img src="{{ asset('resources/img/shop/raw_logo_dark.png') }}" alt=""></a>
                                 </li>
-
+                                {{ render(controller('InoShopBundle:Shop:showMenu', {})) }}
                             </ul>
                         </div>
                         <div class="top-bar-right">
+                            <form role="search" id="nav-search-form" method="post" action="{{ path('shop.search') }}">
                             <ul class="menu">
-                                <li><input type="search" placeholder="Search"></li>
-                                <li><button type="button" class="button">Search</button></li>
+                                <li><input type="search" placeholder="Search" name ="search"></li>
+                                <li><button type="submit" class="button">Abracadabra</button></li>
                             </ul>
+                            </form>
                         </div>
                     </div>
                 </div>  
@@ -129,7 +130,7 @@
                 </div>
                 <div class="footer-content">
                     <ul>
-
+                        {{ render(controller('InoShopBundle:Shop:showMenu', {})) }}
                     </ul>
                 </div>
             </div>         
@@ -139,7 +140,7 @@
                     </div>
                     <div class="footer-content">
                         <ul>
-                            <li><a href="#">Connexion</a></li>
+                            <li><a href="{{ path('user.login') }}">Connexion</a></li>
                             <li><a href="#">Account</a></li>
                             <li><a href="#">My orders</a></li>
                             <li><a href="#">My wishlist</a></li>

@@ -3,15 +3,15 @@ ino_user:
     type:     annotation
     prefix:   /user
 
-ino_shop:
-    resource: "@InoShopBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 ino_admin:
     resource: "@InoAdminBundle/Controller/"
     type:     annotation
     prefix:   /admin
+
+ino_shop:
+    resource: "@InoShopBundle/Controller/"
+    type:     annotation
+    prefix:   /
 
 app:
     resource: "@AppBundle/Controller/"
@@ -19,3 +19,6 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

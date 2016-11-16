@@ -1,0 +1,18 @@
+{% for product in products %}
+    <tr href="{{ path('admin.editProduct', {'id' : product.id }) }}">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description | slice(0, 45) }}</td>
+        <td><img src="{{ asset('uploads/photos/' ~ product.image) }}" alt="Product image"></td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.category.name }}</td>
+        <td>
+            <input {% if product.featured %}checked{% endif %} data-bool_name="featured" data-id="{{ product.id }}" type="checkbox" name="check_featured" class="check">
+        </td>
+        <td>
+            <input {% if product.star %}checked{% endif %} data-bool_name="star" data-id="{{ product.id }}" type="checkbox" name="check_star" class="check">
+        </td>
+        <td><a href="{{ path('admin.deleteProduct', {'id' : product.id}) }}"><span class="fa fa-remove"></span></a></td>
+    </tr>
+{% endfor %}

@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new InoAdminBundle\InoAdminBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new InoShopBundle\InoShopBundle(),
             new InoUserBundle\InoUserBundle(),
         ];

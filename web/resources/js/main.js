@@ -10,8 +10,9 @@ $(document).ready(function(){
 
 
     //Edit product links
-    $('table.list tbody tr').dblclick(function() {
-       $(location).attr('href', $(this).attr('href'));
+    $(document).on('dblclick', 'table.list tbody tr', function(){
+        $(location).attr('href', $(this).attr('href'));
     });
+
 
 });

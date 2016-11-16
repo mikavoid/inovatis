@@ -1,0 +1,35 @@
+{% extends 'baseshop.html.twig' %}
+
+{% block body %}
+<!-- Featured ------------------------------------------------------------------>
+<div id="Product">
+
+    <div class="content row">
+        <div class="left">
+            <div class="image">
+                <img class="card-3" src="{{ asset('uploads/photos/' ~ item.image) }}" alt="Photo du produit">
+            </div>
+        </div>
+        <div class="right">
+            <h2>{{ item.name }}</h2>
+            <div class="cat"> {{ item.category.name }}</div>
+            <div class="price">
+                ${{ item.price }}
+            </div>
+            <h4>Description</h4>
+            <p class="description">
+                {{ item.description }}
+            </p>
+            <div class="params">
+                <h4>Quantity</h4>
+                <input type="number" name="pdt_qte" id="pdt_qte" value="1">
+                <div class="buttons">
+                <a href="#" class="button"><span class="fa fa-cart-plus"></span> Add to cart</a>
+            </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</div> <!--#Product-->
+{% endblock %}

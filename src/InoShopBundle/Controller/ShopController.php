@@ -5,11 +5,12 @@ namespace InoShopBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class ShopController extends Controller
 {
     /**
-     * @Route("/", name="shop_home")
+     * @Route("/", name="shop.homepage")
      * @Template()
      */
     public function indexAction()
@@ -32,5 +33,20 @@ class DefaultController extends Controller
             'star' => $star,
         );
         return array();
+    }
+
+    /**
+     * Set menu links
+     */
+    public function showMenuAction()
+    {
+        //Récupération des données
+        $em = $this->getDoctrine()->getManager();
+        $cats = $em->getRepository('AppBundle:Category')->findAll();
+        foreach ($cats as $c) {
+            $url = $this->generateUrl('shop.products');
+            echo '<li><a href="' . $url . '/' . $c->getId() . '">'. $c->getName() . '</a></li>';
+        }
+        return new Response();
     }
 }

@@ -1,0 +1,35 @@
+{% extends 'baseshop.html.twig' %}
+
+{% block body %}
+    <!-- Featured ------------------------------------------------------------------>
+    <section id="Featured">
+        <div class="row">
+            {% if cat is not null %}
+                <h2>{{ cat }}</h2>
+            {% else %}
+                <h2>Products</h2>
+            {% endif %}
+        </div>
+        <div class="row">
+
+            {% for item in featured %}
+                <div class="item">
+                   <a href="{{ path('shop.product', {"pdt_id" : item.id}) }}">
+                    <div class="content">
+                        <div class="left">
+                            <div class="photo">
+                                <img src="{{ asset('uploads/photos/' ~ item.image) }}" alt="">
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="title">
+                                {{ item.name }}
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section> <!--#Featured-->
+{% endblock %}

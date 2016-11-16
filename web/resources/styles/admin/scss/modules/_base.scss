@@ -2,3 +2,9 @@
 body {
   background: $color;
 }
+
+input[type="checkbox"] {
+  width : 20px;
+  height : 20px;
+  line-height: 100%;
+}

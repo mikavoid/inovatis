@@ -3,7 +3,7 @@
 
     {% block main %}
         <section id="main" class="columns">
-            <div class="head">
+         <div class="head">
             {%
             set vars = {    title : 'products',
             path : path('admin.editProduct'),
@@ -26,25 +26,42 @@
                     <th width="20">Quantity</th>
                     <th width="40">Price</th>
                     <th width="200">Categorie</th>
+                    <th width="60">Featured</th>
+                    <th width="60">Star</th>
                     <th width="60">Action</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="products_list">
                 {% for product in products %}
                 <tr href="{{ path('admin.editProduct', {'id' : product.id }) }}">
                     <td>{{ product.id }}</td>
                     <td>{{ product.name }}</td>
-                    <td>{{ product.description }}</td>
+                    <td>{{ product.description | slice(0, 45) }}</td>
                     <td><img src="{{ asset('uploads/photos/' ~ product.image) }}" alt="Product image"></td>
                     <td>{{ product.quantity }}</td>
                     <td>{{ product.price }}</td>
                     <td>{{ product.category.name }}</td>
+                    <td>
+                        <input {% if product.featured %}checked{% endif %} data-bool_name="featured" data-id="{{ product.id }}" type="checkbox" name="check_featured" class="check">
+                    </td>
+                    <td>
+                        <input {% if product.star %}checked{% endif %} data-bool_name="star" data-id="{{ product.id }}" type="checkbox" name="check_star" class="check">
+                    </td>
                     <td><a href="{{ path('admin.deleteProduct', {'id' : product.id}) }}"><span class="fa fa-remove"></span></a></td>
                 </tr>
                 {% endfor %}
-
                 </tbody>
             </table>
+            <div id="spinner">
+                <span class="fa fa-spinner fa-pulse fa-3x fa-fw"></span>
+                <span class="sr-only">Loading...</span>
+            </div>
 
            </section>
     {%  endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+        <script src="{{ asset('resources/js/admin-products-ajax.js') }}"></script>
+    {% endblock %}

@@ -308,4 +308,33 @@ class Item
     {
         return $this->featured;
     }
+    /**
+     * @var boolean
+     */
+    private $star;
+
+
+    /**
+     * Set star
+     *
+     * @param boolean $star
+     *
+     * @return Item
+     */
+    public function setStar($star)
+    {
+        $this->star = $star;
+
+        return $this;
+    }
+
+    /**
+     * Get star
+     *
+     * @return boolean
+     */
+    public function getStar()
+    {
+        return $this->star;
+    }
 }

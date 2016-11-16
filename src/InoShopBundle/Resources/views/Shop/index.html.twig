@@ -5,19 +5,27 @@
     <header id="Header">
         <div class="row align-middle">
             <div id="header_image">
-                <img src="{{ asset('uploads/photos/' ~ star.image) }}" alt="">
+                {% if star is not null %}
+                    <img src="{{ asset('uploads/photos/' ~ star.image) }}" alt="">
+                {% else %}
+                    <img src="{{ asset('resources/img/shop/1.jpg') }}" alt="Pas de produit star">
+                {% endif %}
             </div>
             <div id="header_text">
+            {% if star is not null %}
                 <h1>{{ star.name }}</h1>
                 <p>
                     {{ star.description }}
                 </p>
                 <div class="btns">
                     <ul>
-                        <li><a class="success hollow button" href="#">Details</a></li>
+                        <li><a class="success hollow button" href="{{ path('shop.product', {'pdt_id' : star.id }) }}">Details</a></li>
                         <li><a class="success button" href="#">Add to cart</a></li>
                     </ul>
                 </div>
+            {% else %}
+                <h1>No star product to show</h1>
+            {% endif %}
             </div>
         </div>
     </header> <!--#Header-->
@@ -29,8 +37,10 @@
         </div>
         <div class="row">
 
+            {% if featured is not empty %}
             {% for item in featured %}
                 <div class="item">
+                    <a href="{{ path('shop.product', {'pdt_id' : item.id }) }}">
                     <div class="content card-1">
                         <div class="left">
                             <div class="photo">
@@ -43,8 +53,12 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                 </div>
             {% endfor %}
+            {% else %}
+                <p>No featured products</p>
+            {% endif %}
         </div>
     </section> <!--#Featured-->
 {% endblock %}

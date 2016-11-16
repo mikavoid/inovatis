@@ -5,6 +5,7 @@ namespace InoAdminBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -15,4 +16,6 @@ class DefaultController extends Controller
     {
         return $this->render('InoAdminBundle:Default:index.html.twig');
     }
+
+
 }
